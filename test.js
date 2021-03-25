@@ -311,7 +311,7 @@ experiment('logs each request', () => {
       path: '/',
       method: 'GET',
       handler: (req, h) => {
-        req.logger2.info('hello logger')
+        // req.logger2.info('hello logger')
         return 'hello world'
       }
     })
@@ -370,7 +370,7 @@ experiment('logs each request', () => {
       path: '/',
       method: 'GET',
       handler: async (req, h) => {
-        req.logger2 = undefined
+        // req.logger2 = undefined
         return 'hello world'
       }
     })
@@ -799,7 +799,7 @@ experiment('uses a prior pino instance', () => {
     }
 
     await server.register(plugin)
-    server.logger.info({ foo: 'bar' }, 'hello world')
+    // server.logger.info({ foo: 'bar' }, 'hello world')
     await finish
   })
 })

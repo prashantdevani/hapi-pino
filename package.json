@@ -1,6 +1,6 @@
 {
   "name": "hapi-pino-multiple",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Hapi plugin for the Pino logger ",
   "main": "index.js",
   "scripts": {

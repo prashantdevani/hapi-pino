@@ -20,6 +20,8 @@ let ignoredEventTags = {
   request: '*'
 }
 
+let childBound = null
+
 async function register (server, options) {
   // clone all user options to account for internal mutations, except for existing stream and pino instances
   options = Object.assign(Hoek.clone(options), {
@@ -94,15 +96,17 @@ async function register (server, options) {
   // set a logger for each request
   server.ext('onRequest', (request, h) => {
     if (isLoggingIgnored(options, request)) {
-      request.logger2 = nullLogger
+      childBound = nullLogger
       return h.continue
     }
 
-    const childBindings = getChildBindings(request)
-    request.logger2 = logger.child(childBindings)
+    if (!childBound) {
+      const childBindings = getChildBindings(request)
+      childBound = logger.child(childBindings)
+    }
 
     if (shouldLogRequestStart(request)) {
-      request.logger2.info({
+      childBound.info({
         req: request
       }, 'request start')
     }
@@ -128,20 +132,20 @@ async function register (server, options) {
       return
     }
 
-    if (!request.logger2) {
+    if (!childBound) {
       const childBindings = getChildBindings(request)
-      request.logger2 = logger.child(childBindings)
+      childBound = logger.child(childBindings)
     }
 
     if (event.error && isEnabledLogEvent(options, 'request-error')) {
-      request.logger2.error(
+      childBound.error(
         {
           err: event.error
         },
         'request error'
       )
     } else if (event.channel === 'app' && !isCustomTagsLoggingIgnored(event, ignoredEventTags.request)) {
-      logEvent(request.logger2, event)
+      logEvent(childBound, event)
     }
   })
 
@@ -153,11 +157,11 @@ async function register (server, options) {
 
     if (shouldLogRequestComplete(request)) {
       const info = request.info
-      if (!request.logger2) {
+      if (!childBound) {
         const childBindings = getChildBindings(request)
-        request.logger2 = logger.child(childBindings)
+        childBound = logger.child(childBindings)
       }
-      request.logger2.info(
+      childBound.info(
         {
           payload: options.logPayload ? request.payload : undefined,
           queryParams: options.logQueryParams ? request.query : undefined,
