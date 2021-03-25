@@ -272,5 +272,5 @@ async function register (server, options) {
 module.exports = {
   register,
   multiple: true,
-  name: 'hapi-pino'
+  name: 'hapi-pino-multiple'
 }
