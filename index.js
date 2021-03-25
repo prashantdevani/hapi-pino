@@ -89,7 +89,7 @@ async function register (server, options) {
       : () => true
 
   // expose logger as 'server.logger'
-  server.decorate('server', 'logger', logger)
+  // server.decorate('server', 'logger', logger)
 
   // set a logger for each request
   server.ext('onRequest', (request, h) => {
@@ -271,5 +271,6 @@ async function register (server, options) {
 
 module.exports = {
   register,
+  multiple: true,
   name: 'hapi-pino'
 }
