@@ -94,15 +94,15 @@ async function register (server, options) {
   // set a logger for each request
   server.ext('onRequest', (request, h) => {
     if (isLoggingIgnored(options, request)) {
-      request.logger = nullLogger
+      request.logger2 = nullLogger
       return h.continue
     }
 
     const childBindings = getChildBindings(request)
-    request.logger = logger.child(childBindings)
+    request.logger2 = logger.child(childBindings)
 
     if (shouldLogRequestStart(request)) {
-      request.logger.info({
+      request.logger2.info({
         req: request
       }, 'request start')
     }
@@ -128,20 +128,20 @@ async function register (server, options) {
       return
     }
 
-    if (!request.logger) {
+    if (!request.logger2) {
       const childBindings = getChildBindings(request)
-      request.logger = logger.child(childBindings)
+      request.logger2 = logger.child(childBindings)
     }
 
     if (event.error && isEnabledLogEvent(options, 'request-error')) {
-      request.logger.error(
+      request.logger2.error(
         {
           err: event.error
         },
         'request error'
       )
     } else if (event.channel === 'app' && !isCustomTagsLoggingIgnored(event, ignoredEventTags.request)) {
-      logEvent(request.logger, event)
+      logEvent(request.logger2, event)
     }
   })
 
@@ -153,11 +153,11 @@ async function register (server, options) {
 
     if (shouldLogRequestComplete(request)) {
       const info = request.info
-      if (!request.logger) {
+      if (!request.logger2) {
         const childBindings = getChildBindings(request)
-        request.logger = logger.child(childBindings)
+        request.logger2 = logger.child(childBindings)
       }
-      request.logger.info(
+      request.logger2.info(
         {
           payload: options.logPayload ? request.payload : undefined,
           queryParams: options.logQueryParams ? request.query : undefined,

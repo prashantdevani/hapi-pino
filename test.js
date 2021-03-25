@@ -311,7 +311,7 @@ experiment('logs each request', () => {
       path: '/',
       method: 'GET',
       handler: (req, h) => {
-        req.logger.info('hello logger')
+        req.logger2.info('hello logger')
         return 'hello world'
       }
     })
@@ -357,7 +357,7 @@ experiment('logs each request', () => {
     expect(options).to.equal(optionsClone)
   })
 
-  test('handles removed request.logger', async () => {
+  test('handles removed request.logger2', async () => {
     const server = getServer()
 
     let done
@@ -370,7 +370,7 @@ experiment('logs each request', () => {
       path: '/',
       method: 'GET',
       handler: async (req, h) => {
-        req.logger = undefined
+        req.logger2 = undefined
         return 'hello world'
       }
     })
@@ -804,8 +804,8 @@ experiment('uses a prior pino instance', () => {
   })
 })
 
-experiment('request.logger.child() bindings', () => {
-  test('request.logger.child() bindings are { req: request } by default', async () => {
+experiment('request.logger2.child() bindings', () => {
+  test('request.logger2.child() bindings are { req: request } by default', async () => {
     const server = getServer()
     let done
     const finish = new Promise(function (resolve, reject) {
@@ -831,7 +831,7 @@ experiment('request.logger.child() bindings', () => {
     await finish
   })
 
-  test('request.logger.child() bindings can be provided via getChildBindings(request)', async () => {
+  test('request.logger2.child() bindings can be provided via getChildBindings(request)', async () => {
     const server = getServer()
     let done
     const finish = new Promise(function (resolve, reject) {

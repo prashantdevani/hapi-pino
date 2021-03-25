@@ -43,7 +43,7 @@ async function start () {
       request.log(['a', 'b'], 'Request into hello world')
 
       // you can also use a pino instance, which will be faster
-      request.logger.info('In handler %s', request.path)
+      request.logger2.info('In handler %s', request.path)
 
       return 'hello world'
     }
@@ -279,7 +279,7 @@ events"](#hapievents) section.
 
 **hapi-pino** decorates the Hapi request with:
 
-* `request.logger`, which is an instance of [pino][pino] bound to the current request, so you can trace all the logs of a given request. See [pino][pino] doc for the way to actual log.
+* `request.logger2`, which is an instance of [pino][pino] bound to the current request, so you can trace all the logs of a given request. See [pino][pino] doc for the way to actual log.
 
 <a name="hapievents"></a>
 ### Hapi Events

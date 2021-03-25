@@ -20,7 +20,7 @@ async function start () {
       request.log(['a', 'b'], 'Request into hello world')
 
       // you can also use a pino instance, which will be faster
-      request.logger.info('In handler %s', request.path)
+      request.logger2.info('In handler %s', request.path)
 
       return 'hello world'
     }
