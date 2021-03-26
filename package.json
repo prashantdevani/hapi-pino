@@ -1,5 +1,5 @@
 {
-  "name": "@prashant/hapi-pino",
+  "name": "hapi-pino-multiple",
   "version": "1.0.4",
   "description": "Hapi plugin for the Pino logger ",
   "main": "index.js",
