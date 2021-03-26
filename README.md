@@ -68,7 +68,7 @@ start().catch((err) => {
 
 **hapi-pino-multiple** goal is to enable Hapi applications to log via [pino][pino], also it supports plugin registration multiple times. **hapi-pino-multiple**
  binds to the Hapi events system as described in the ["Hapi
-events"](#hapievents) section.
+events"](#hapi-events) section.
 
 ### Options
 ### `options.logPayload: boolean`
