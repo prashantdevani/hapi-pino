@@ -1,6 +1,6 @@
 {
-  "name": "hapi-pino-multiple",
-  "version": "1.0.3",
+  "name": "@prashant/hapi-pino",
+  "version": "1.0.4",
   "description": "Hapi plugin for the Pino logger ",
   "main": "index.js",
   "scripts": {
@@ -35,11 +35,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pinojs/hapi-pino.git"
+    "url": "git+https://github.com/prashantdevani/hapi-pino.git"
   },
-  "author": "David Mark Clements",
+  "author": "Prashant Devani",
   "bugs": {
-    "url": "https://github.com/pinojs/hapi-pino/issues"
+    "url": "https://github.com/prashantdevani/hapi-pino/issues"
   },
-  "homepage": "https://github.com/pinojs/hapi-pino#readme"
+  "homepage": "https://github.com/prashantdevani/hapi-pino#readme"
 }

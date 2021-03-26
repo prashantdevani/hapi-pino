@@ -1,3 +1,4 @@
+This is a fork of [hapi-pino](https://github.com/pinojs/hapi-pino)
 # hapi-pino&nbsp;&nbsp;[![Build Status](https://travis-ci.org/pinojs/hapi-pino.svg)](https://travis-ci.org/pinojs/hapi-pino) [![Coverage Status](https://coveralls.io/repos/github/pinojs/hapi-pino/badge.svg?branch=master)](https://coveralls.io/github/pinojs/hapi-pino?branch=master)
 
 
@@ -42,9 +43,6 @@ async function start () {
       // request.log is HAPI standard way of logging
       request.log(['a', 'b'], 'Request into hello world')
 
-      // you can also use a pino instance, which will be faster
-      request.logger2.info('In handler %s', request.path)
-
       return 'hello world'
     }
   })
@@ -57,9 +55,6 @@ async function start () {
       redact: ['req.headers.authorization']
     }
   })
-
-  // also as a decorated API
-  server.logger.info('another way for accessing it')
 
   // and through Hapi standard logging system
   server.log(['subsystem'], 'third way for accessing it')
@@ -269,19 +264,6 @@ events"](#hapievents) section.
   Path to be redacted in the log lines. See the [log redaction](https://getpino.io/#/docs/redaction) docs for more details.
 
 <a name="serverdecorations"></a>
-### Server Decorations
-
-**hapi-pino** decorates the Hapi server with `server.logger`, which is an instance of
-  [pino][pino]. See its doc for the way to actual log.
-
-<a name="requestdecorations"></a>
-### Request Decorations
-
-**hapi-pino** decorates the Hapi request with:
-
-* `request.logger2`, which is an instance of [pino][pino] bound to the current request, so you can trace all the logs of a given request. See [pino][pino] doc for the way to actual log.
-
-<a name="hapievents"></a>
 ### Hapi Events
 
 **hapi-pino** listens to some Hapi events:
