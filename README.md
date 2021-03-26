@@ -1,23 +1,14 @@
 This is a fork of [hapi-pino](https://github.com/pinojs/hapi-pino)
-# hapi-pino&nbsp;&nbsp;[![Build Status](https://travis-ci.org/pinojs/hapi-pino.svg)](https://travis-ci.org/pinojs/hapi-pino) [![Coverage Status](https://coveralls.io/repos/github/pinojs/hapi-pino/badge.svg?branch=master)](https://coveralls.io/github/pinojs/hapi-pino?branch=master)
+# hapi-pino-multiple&nbsp;&nbsp;[![Build Status](https://travis-ci.org/pinojs/hapi-pino.svg)](https://travis-ci.org/pinojs/hapi-pino) [![Coverage Status](https://coveralls.io/repos/github/pinojs/hapi-pino/badge.svg?branch=master)](https://coveralls.io/github/pinojs/hapi-pino?branch=master)
 
 
 [Hapi](http://hapijs.com) plugin for the [Pino](https://github.com/pinojs/pino) logger. It logs in JSON for easy
 post-processing.
 
-## Supported Hapi versions
-
-- hapi-pino v7.x and v8.x supports Hapi v18 and v19.
-- hapi-pino v6.x supports Hapi v17, v18 and v19
-- hapi-pino v5.x supports Hapi v17 and v18
-- hapi-pino v3.x
-supports Hapi v17 only. The maximum version that can be used with Hapi v16 is Pino v4.
-- [hapi-pino v2.x](https://github.com/pinojs/hapi-pino/tree/v2.x.x) is the LTS line for Hapi v16.
-
 ## Install
 
 ```
-npm install hapi-pino
+npm install hapi-pino-multiple
 ```
 
 ## Usage
@@ -73,11 +64,9 @@ start().catch((err) => {
 ## API
 
 - [Options](#options)
-- [Server decorations](#serverdecorations)
-- [Request decorations](#requestdecorations)
 - [Hapi Events](#hapievents)
 
-**hapi-pino** goal is to enable Hapi applications to log via [pino][pino]. To enable this, it decorates both the [server](#serverdecorations) and the [request](#requestadditions). Moreover, **hapi-pino**
+**hapi-pino-multiple** goal is to enable Hapi applications to log via [pino][pino], also it supports plugin registration multiple times. **hapi-pino-multiple**
  binds to the Hapi events system as described in the ["Hapi
 events"](#hapievents) section.
 
